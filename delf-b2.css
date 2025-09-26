@@ -177,3 +177,34 @@ a:hover{opacity:.9}
   .cta-title{font-size:1.4rem}
   .cta-sub{font-size:1rem}
 }
+/* Center intro title and text */
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro h1,
+.intro p {
+  text-align: center;
+}
+
+/* Center hero figure and caption */
+.hero {
+  margin: 30px auto 10px;
+  max-width: 650px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  text-align: center; /* centers caption */
+}
+
+.hero figcaption {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: .92rem;
+  color: var(--ink-2);
+  border-top: 1px solid #ddd;
+  font-style: italic;
+  text-align: center; /* make sure caption centered */
+}
