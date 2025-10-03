@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://델프.com/sitemap.xml
+Sitemap: https://xn--bo1b594d.com/sitemap.xml
