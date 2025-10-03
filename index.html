@@ -39,6 +39,11 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="delf-b2.css?v=20250927" />
+  <!-- OVERRIDE: remove any image length/height restriction on the hero -->
+  <style>
+    .hero { max-height: none !important; height: auto !important; overflow: visible !important; }
+    .hero img { display:block; width:100%; height:auto !important; max-height:none !important; object-fit:unset !important; aspect-ratio:auto !important; }
+  </style>
 </head>
 <body>
   <main class="delf-main" role="main">
@@ -51,7 +56,7 @@
 
     <!-- Hero image -->
     <figure class="hero">
-      <img src="https://french-in-seoul.com/wp-content/uploads/2025/09/Classroom.jpg"
+      <img src="https://french-in-seoul.com/wp-content/uploads/2025/10/Classroom-2.png"
            alt="델프 B2 대비 프랑스어 수업 장면" loading="lazy" />
       <figcaption>DELF B2 대비를 위한 교실 수업 장면 (일러스트)</figcaption>
     </figure>
