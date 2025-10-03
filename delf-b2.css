@@ -208,3 +208,7 @@ a:hover{opacity:.9}
   font-style: italic;
   text-align: center; /* make sure caption centered */
   }
+  /* CTA inline note link */
+.cta-note{margin-top:16px}
+.cta-link{color:#fff; text-decoration:underline; font-weight:800}
+.cta-link:hover{opacity:.9}
