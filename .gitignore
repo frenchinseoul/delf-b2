@@ -1,12 +1,5 @@
 .DS_Store
 seo.txt
-wincher/Keywords - 델프.com - 델프.com \[South Korea - Korean - Desktop] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Keywords - 델프.com - 델프.com \[South Korea - Korean - Mobile] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - Backlink profile - 델프.com - 델프.com \[South Korea - Korean - Desktop] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - Backlink profile - 델프.com - 델프.com \[South Korea - Korean - Mobile] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - On-Page SEO - 델프.com - 델프.com \[South Korea - Korean - Desktop] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - On-Page SEO - 델프.com - 델프.com \[South Korea - Korean - Mobile] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - Overview - 델프.com - 델프.com \[South Korea - Korean - Desktop] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - Overview - 델프.com - 델프.com \[South Korea - Korean - Mobile] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - SERP Benchmark - 델프.com - 델프.com \[South Korea - Korean - Desktop] - Sep 24, 2025 - Oct 24, 2025.csv
-wincher/Landing Pages - SERP Benchmark - 델프.com - 델프.com \[South Korea - Korean - Mobile] - Sep 24, 2025 - Oct 24, 2025.csv
+
+# Ignore all Wincher exports regardless of Hangul normalization
+wincher/
