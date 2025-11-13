@@ -55,6 +55,16 @@ body{
   font-size:1.15rem;
   font-weight:600;
 }
+.notice{
+  margin:16px auto 0;
+  max-width:540px;
+  padding:10px 14px;
+  font-size:1rem;
+  background:#fff8eb;
+  color:#b45309;
+  border:1px solid #fcd9a5;
+  border-radius:var(--radius-sm);
+}
 
 /* Sections */
 .section{margin-top:50px}

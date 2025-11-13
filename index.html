@@ -35,9 +35,18 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied'
+  });
   gtag('js', new Date());
-
-  gtag('config', 'G-QH1BMWHPY7');
+  gtag('config', 'G-QH1BMWHPY7', {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
 </script>
 
   <!-- Styles -->
@@ -56,6 +65,7 @@
       <h1 class="page-title">델프 B2 대비 코칭 <span class="en">(DELF B2)</span></h1>
       <p class="lead"><strong>DELF B2</strong> 합격이 목표이신가요?</p>
       <p>맞춤형 로드맵으로 <strong>말하기 모의시험</strong>, <strong>쓰기 첨삭</strong>, <strong>듣기·읽기 통합 훈련</strong>까지 한 번에 준비하세요. 전문 코칭과 시험장 시뮬레이션으로 합격 가능성을 높입니다.</p>
+      <p class="notice"><strong>이 프로그램은 현재 대한민국에 거주하는 성인 학습자만 신청 가능합니다.</strong></p>
     </header>
 
     <!-- Hero image -->
@@ -67,7 +77,7 @@
     <!-- Program summary -->
     <section class="section">
       <h2 class="section-title is-blue">델프 B2 코칭 프로그램 한눈에</h2>
-      <p>델프 B2 합격 경험과 감독관 노트를 토대로 <strong>로드맵 진단 → 말하기 모의시험 → 쓰기 첨삭</strong> 순으로 진행합니다. 서울 염창역 인근 대면 수업과 온라인 수업 중 편한 방식으로 선택하세요.</p>
+      <p>델프 B2 합격 경험과 감독관 노트를 토대로 <strong>로드맵 진단 → 말하기 모의시험 → 쓰기 첨삭</strong> 순으로 진행합니다. 서울 염창역 인근 대면 수업과 대한민국 거주자를 위한 온라인 수업 중 편한 방식을 선택하세요.</p>
       <ul class="bullets">
         <li><strong>초기 진단</strong>: 기존 점수, 목표 응시 시기, 취약 유형을 확인하고 주간 계획을 제안합니다.</li>
         <li><strong>말하기 대비</strong>: 실제 시험과 같은 20분 모의시험 후 즉시 교정.</li>
@@ -186,15 +196,15 @@
         <dd>현재 실력과 주당 학습 가능 시간을 기준으로 8주 루틴을 제안합니다. 직장인·대학생처럼 시간이 제한된 경우에도 최소 주 2회 말하기/쓰기 루틴을 유지하도록 과제를 조정합니다.</dd>
         <dt>DELF B2 쓰기 첨삭은 어떤 형식인가요?</dt>
         <dd>시험과 동일한 시간에 작성한 에세이를 공유 문서에서 첨삭합니다. 주장 전개, 연결어, 문장 다듬기를 각각 주석으로 남겨 다음 초안에서 바로 반영할 수 있습니다.</dd>
-        <dt>서울 외 지역 또는 해외에서도 수업이 가능한가요?</dt>
-        <dd>온라인 수업으로 동일한 교재와 피드백을 제공합니다. 필요하면 시험 직전 주말에 서울 대면 모의시험을 추가해 현장 감각을 익힐 수 있습니다.</dd>
+        <dt>서울 외 지역에서도 수업이 가능한가요?</dt>
+        <dd>대한민국에 거주하신다면 어디에서든 온라인으로 동일한 커리큘럼과 피드백을 제공합니다. 필요하면 시험 직전 주말에 서울 대면 모의시험을 추가해 현장 감각을 익힐 수 있습니다.</dd>
       </dl>
     </section>
 
     <!-- CTA -->
     <section class="cta">
       <h2 class="cta-title">델프 B2 수업 신청 방법</h2>
-      <p class="cta-sub">DELF B2 수업을 원하신다면 아래 방법으로 문의해 주세요.</p>
+      <p class="cta-sub">대한민국 거주자 중 DELF B2 수업을 원하신다면 아래 방법으로 문의해 주세요.</p>
       <div class="cta-buttons">
         <a class="btn btn-white" href="https://french-in-seoul.com/redirecting_kakao-kr/" target="_blank" rel="noreferrer noopener" aria-label="카카오톡으로 메시지 보내기">카카오톡으로 메시지 보내기</a>
         <a class="btn btn-outline" href="https://french-in-seoul.com/%ED%94%84%EB%9E%91%EC%8A%A4%EC%96%B4-%EC%88%98%EC%97%85-%EB%AC%B8%EC%9D%98/" target="_blank" rel="noreferrer noopener" aria-label="수업 문의 폼 작성하기">수업 문의 폼 작성하기</a>
@@ -218,9 +228,12 @@
     "name":"델프 B2 대비 프랑스어 수업 (DELF B2 Coaching)",
     "serviceType":"French tutoring",
     "provider":{"@type":"Organization","name":"French-in-Seoul","url":"https://델프.com/"},
-    "areaServed":{"@type":"AdministrativeArea","name":"Seoul, KR"},
+    "areaServed":[
+      {"@type":"AdministrativeArea","name":"Seoul, KR"},
+      {"@type":"Country","name":"Republic of Korea","alternateName":"KR"}
+    ],
     "availableChannel":[
-      {"@type":"ServiceChannel","name":"Online (Discord)","serviceUrl":"https://french-in-seoul.com/델프-b2/"},
+      {"@type":"ServiceChannel","name":"Online (대한민국 거주자 전용 Discord)","serviceUrl":"https://french-in-seoul.com/델프-b2/"},
       {"@type":"ServiceChannel","name":"In-person (염창역 인근 스터디 카페)","serviceUrl":"https://french-in-seoul.com/델프-b2/"}
     ],
     "offers":[
@@ -241,8 +254,8 @@
        "acceptedAnswer":{"@type":"Answer","text":"현재 실력과 주당 학습 시간을 기준으로 8주 루틴을 제안하며, 직장인·대학생 일정에 맞춰 말하기/쓰기 과제를 조정합니다."}},
       {"@type":"Question","name":"DELF B2 쓰기 첨삭은 어떤 형식인가요?",
        "acceptedAnswer":{"@type":"Answer","text":"시험과 동일한 조건으로 작성한 에세이를 공유 문서에서 첨삭하고 주장 전개·연결어·문장 다듬기를 각각 주석으로 제공합니다."}},
-      {"@type":"Question","name":"서울 외 지역 또는 해외에서도 수업이 가능한가요?",
-       "acceptedAnswer":{"@type":"Answer","text":"온라인으로 동일한 자료와 피드백을 제공하며, 필요 시 시험 직전 주말에 서울 대면 모의시험을 추가할 수 있습니다."}}
+      {"@type":"Question","name":"서울 외 지역에서도 수업이 가능한가요?",
+       "acceptedAnswer":{"@type":"Answer","text":"대한민국 어디에 계시든 온라인으로 동일한 커리큘럼과 피드백을 제공하며, 필요 시 시험 직전 주말에 서울 대면 모의시험을 추가할 수 있습니다."}}
     ]
   }
   </script>
@@ -253,7 +266,7 @@
       © French-in-Seoul — Contact: <a href="mailto:support@french-in-seoul.com">support@french-in-seoul.com</a> |
       <a href="https://french-in-seoul.com/privacy-policy/">Privacy Policy</a> |
       <a href="https://french-in-seoul.com/">Main site</a>
-      <br><small>This site uses Google Analytics to improve performance. You can opt out via the GA browser add-on.</small>
+      <br><small>이 사이트는 대한민국 거주자를 위한 서비스이며, Google Analytics는 쿠키 없이 집계 데이터로만 활용됩니다.</small>
     </p>
   </footer>
 
