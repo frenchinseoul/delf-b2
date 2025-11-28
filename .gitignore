@@ -4,3 +4,4 @@ seo.txt
 # Ignore all Wincher exports regardless of Hangul normalization
 wincher/
 translations-en.md
+data/
