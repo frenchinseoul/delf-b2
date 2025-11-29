@@ -32,8 +32,7 @@
   <meta name="twitter:description" content="DELF B2 말하기·쓰기 실전 대비, 감독관 노트 기반 피드백, 서울·온라인 1:1·소그룹 운영. 체험 수업 후 로드맵을 확인하세요.">
   <meta name="twitter:image" content="https://french-in-seoul.com/wp-content/uploads/2025/10/Classroom-2.png">
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7"></script>
+  <!-- Google tag (gtag.js) deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -43,16 +42,38 @@
     ad_personalization: 'denied',
     analytics_storage: 'denied'
   });
-  gtag('js', new Date());
-  gtag('config', 'G-QH1BMWHPY7', {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false
-  });
+  (function(){
+    var loaded=false;
+    function loadGtag(){
+      if(loaded) return;
+      loaded=true;
+      var s=document.createElement('script');
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7';
+      s.async=true;
+      s.onload=function(){
+        gtag('js', new Date());
+        gtag('config', 'G-QH1BMWHPY7', {
+          anonymize_ip: true,
+          allow_google_signals: false,
+          allow_ad_personalization_signals: false
+        });
+      };
+      document.head.appendChild(s);
+    }
+    function trigger(){loadGtag(); cleanup();}
+    function cleanup(){
+      events.forEach(function(evt){ window.removeEventListener(evt, trigger, opts); });
+    }
+    var events=['click','scroll','keydown','touchstart'];
+    var opts={passive:true};
+    events.forEach(function(evt){ window.addEventListener(evt, trigger, opts); });
+  })();
 </script>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="delf-b2.css?v=20250927" />
+  <!-- Styles (non-blocking) -->
+  <link rel="preload" href="delf-b2.css?v=20250927" as="style">
+  <link rel="stylesheet" href="delf-b2.css?v=20250927" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="delf-b2.css?v=20250927"></noscript>
   <link rel="preload" as="image" href="image/Classroom.avif" imagesrcset="image/Classroom.avif 1280w" fetchpriority="high">
   <!-- OVERRIDE: remove any image length/height restriction on the hero -->
   <style>

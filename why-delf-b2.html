@@ -35,8 +35,7 @@
   <!-- Preload poster (LCP) -->
   <link rel="preload" as="image" href="video/seine-poster.avif" fetchpriority="high">
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7"></script>
+  <!-- Google tag (gtag.js) deferred until user interaction -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -46,16 +45,38 @@
     ad_personalization: 'denied',
     analytics_storage: 'denied'
   });
-  gtag('js', new Date());
-  gtag('config', 'G-QH1BMWHPY7', {
-    anonymize_ip: true,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false
-  });
+  (function(){
+    var loaded=false;
+    function loadGtag(){
+      if(loaded) return;
+      loaded=true;
+      var s=document.createElement('script');
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7';
+      s.async=true;
+      s.onload=function(){
+        gtag('js', new Date());
+        gtag('config', 'G-QH1BMWHPY7', {
+          anonymize_ip: true,
+          allow_google_signals: false,
+          allow_ad_personalization_signals: false
+        });
+      };
+      document.head.appendChild(s);
+    }
+    function trigger(){loadGtag(); cleanup();}
+    function cleanup(){
+      events.forEach(function(evt){ window.removeEventListener(evt, trigger, opts); });
+    }
+    var events=['click','scroll','keydown','touchstart'];
+    var opts={passive:true};
+    events.forEach(function(evt){ window.addEventListener(evt, trigger, opts); });
+  })();
 </script>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="delf-b2.css?v=20250927" />
+  <!-- Styles (non-blocking) -->
+  <link rel="preload" href="delf-b2.css?v=20250927" as="style">
+  <link rel="stylesheet" href="delf-b2.css?v=20250927" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="delf-b2.css?v=20250927"></noscript>
   <style>
     .hero video{width:100%;height:500px;object-fit:cover;object-position:center;display:block}
     @media (max-width:640px){.hero video{height:300px}}
