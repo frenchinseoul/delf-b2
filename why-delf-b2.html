@@ -265,13 +265,13 @@
   </script>
 
   <!-- Footer -->
-  <footer class="section" style="text-align:center">
-    <p>
-      © French-in-Seoul — 문의: <a href="mailto:support@french-in-seoul.com">support@french-in-seoul.com</a> |
-      <a href="https://french-in-seoul.com/개인정보-처리방침/">개인정보처리방침</a> |
-      <a href="https://french-in-seoul.com">메인 사이트</a>
-      <br><small>이 사이트는 대한민국 거주자를 위한 서비스이며, Google Analytics는 쿠키 없이 집계 데이터로만 활용됩니다.</small>
-    </p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p><strong>상호</strong>: 프렌치인서울 | <strong>대표</strong>: Weidert Cedric Gabriel | <strong>사업자등록번호</strong>: 108-28-52316</p>
+      <p><strong>주소</strong>: 서울 강서구 공항대로 525 비원오피스텔 1501 가-297호 | <strong>전화</strong>: <a href="tel:+821082979843">+82-10-8297-9843</a> | <strong>이메일</strong>: <a href="mailto:support@french-in-seoul.com">support@french-in-seoul.com</a></p>
+        <p><strong>호스팅</strong>: WordPress.com | <strong><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1082852316" target="_blank" rel="noreferrer noopener">사업자정보확인</a></strong></p>
+        <p><a href="https://french-in-seoul.com/이용약관/">이용약관</a> · <a class="js-policy" data-policy="refund" href="https://french-in-seoul.com/환불-취소정책/">환불/취소정책</a> · <a class="js-policy" data-policy="privacy" href="https://french-in-seoul.com/개인정보-처리방침/">개인정보처리방침</a></p>
+    </div>
   </footer>
 
   <!-- Modal: Privacy Policy -->
@@ -317,9 +317,9 @@
     var closeEls = modal.querySelectorAll('[data-close]');
     var lastFocus = null;
 
-    // Find the footer privacy link
-    var privacyLink = document.querySelector('footer a[href*="/개인정보-처리방침/"]');
-    if(!privacyLink) return;
+    // Find the policy links in the footer
+    var policyLinks = document.querySelectorAll('footer a.js-policy');
+    if(!policyLinks.length) return;
 
     function openModal(url){
       lastFocus = document.activeElement;
@@ -338,9 +338,11 @@
       if(lastFocus) lastFocus.focus();
     }
 
-    privacyLink.addEventListener('click', function(e){
-      e.preventDefault();
-      openModal(this.href);
+    policyLinks.forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        openModal(this.href);
+      });
     });
 
     closeEls.forEach(function(el){ el.addEventListener('click', closeModal); });

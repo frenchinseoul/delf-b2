@@ -194,6 +194,27 @@ a{color:var(--blue); text-underline-offset:2px}
 a:hover{opacity:.9}
 .ext-link a{font-weight:700}
 
+/* Footer */
+.site-footer{
+  margin-top:60px;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.95);
+  box-shadow:0 -2px 12px rgba(0,0,0,0.04);
+}
+.site-footer__inner{
+  max-width:900px;
+  margin:0 auto;
+  padding:24px 20px 32px;
+  color:#334155;
+  line-height:1.7;
+}
+.site-footer p{margin:6px 0}
+.site-footer a{
+  color:#1e40af;
+  text-decoration:none;
+}
+.site-footer a:hover{text-decoration:underline}
+
 /* CTA */
 .cta{
   margin-top:60px;
