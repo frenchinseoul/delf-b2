@@ -78,7 +78,14 @@
   <noscript><link rel="stylesheet" href="../delf-b2.css?v=20250927"></noscript>
   <link rel="preload" as="image" href="employe_velo.avif" imagesrcset="employe_velo.avif 1280w" fetchpriority="high">
   <style>
-    .hero img{height:auto;object-fit:contain;max-height:none}
+    .hero img{
+      width:100%;
+      height:auto;
+      max-height:none;
+      aspect-ratio:auto; /* avoid reserving extra space below the image */
+      object-fit:contain;
+      display:block;
+    }
   </style>
 </head>
 <body>
