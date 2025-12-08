@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7"></script>
+  <!-- Google tag (Analytics + Ads: gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJ2R92X66J"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -306,7 +306,9 @@
   var reject = banner.querySelector('[data-consent="reject"]');
   var CONSENT_KEY = 'ga_consent_choice';
   var GA_ID = 'G-QH1BMWHPY7';
-  var configured = false;
+  var ADS_ID = 'G-CJ2R92X66J';
+  var configuredAnalytics = false;
+  var configuredAds = false;
 
   function hide(){
     banner.classList.remove('is-visible');
@@ -322,9 +324,15 @@
       ad_personalization: 'denied',
       analytics_storage: granted ? 'granted' : 'denied'
     });
-    if(granted && !configured){
-      gtag('config', GA_ID, { anonymize_ip: true });
-      configured = true;
+    if(granted){
+      if(!configuredAnalytics){
+        gtag('config', GA_ID, { anonymize_ip: true });
+        configuredAnalytics = true;
+      }
+      if(!configuredAds){
+        gtag('config', ADS_ID);
+        configuredAds = true;
+      }
     }
     hide();
   }
