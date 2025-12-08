@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent','default',{
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      analytics_storage:'denied'
+    });
+  </script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -34,48 +48,10 @@
   <meta name="twitter:description" content="토요일 10:00–12:30, 최소 2명~최대 4명 DELF B2 그룹 수업. Didier DELF B2 100% 교재, 1회 75,000원/1인.">
   <meta name="twitter:image" content="https://french-in-seoul.com/wp-content/uploads/2025/10/Classroom-2.png">
 
-  <!-- Google tag (gtag.js) deferred until user interaction -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied'
-  });
-  (function(){
-    var loaded=false;
-    function loadGtag(){
-      if(loaded) return;
-      loaded=true;
-      var s=document.createElement('script');
-      s.src='https://www.googletagmanager.com/gtag/js?id=G-QH1BMWHPY7';
-      s.async=true;
-      s.onload=function(){
-        gtag('js', new Date());
-        gtag('config', 'G-QH1BMWHPY7', {
-          anonymize_ip: true,
-          allow_google_signals: false,
-          allow_ad_personalization_signals: false
-        });
-      };
-      document.head.appendChild(s);
-    }
-    function trigger(){loadGtag(); cleanup();}
-    function cleanup(){
-      events.forEach(function(evt){ window.removeEventListener(evt, trigger, opts); });
-    }
-    var events=['click','scroll','keydown','touchstart'];
-    var opts={passive:true};
-    events.forEach(function(evt){ window.addEventListener(evt, trigger, opts); });
-  })();
-</script>
-
   <!-- Styles (non-blocking) -->
-  <link rel="preload" href="delf-b2.css?v=20250927" as="style">
-  <link rel="stylesheet" href="delf-b2.css?v=20250927">
-  <noscript><link rel="stylesheet" href="delf-b2.css?v=20250927"></noscript>
+  <link rel="preload" href="delf-b2.css?v=20251020" as="style">
+  <link rel="stylesheet" href="delf-b2.css?v=20251020">
+  <noscript><link rel="stylesheet" href="delf-b2.css?v=20251020"></noscript>
   <link rel="preload" as="image" href="image/Classroom.avif" imagesrcset="image/Classroom.avif 1920w" imagesizes="(max-width: 1024px) 90vw, 651px" fetchpriority="high">
   <!-- OVERRIDE: show full hero illustration without cropping -->
   <style>
@@ -83,6 +59,15 @@
   </style>
 </head>
 <body>
+  <div id="consent-banner" class="consent-banner" role="dialog" aria-live="polite" aria-label="Analytics consent" hidden>
+    <div class="consent-banner__inner">
+      <p class="consent-banner__text">사이트 이용 경험을 개선하기 위해 익명 통계(구글 애널리틱스)만 사용합니다. ‘수락’을 누르면 쿠키 없이 집계 데이터만 전송됩니다.</p>
+      <div class="consent-banner__actions">
+        <button type="button" class="consent-banner__accept" data-consent="accept">수락</button>
+        <button type="button" class="consent-banner__decline" data-consent="reject">거부</button>
+      </div>
+    </div>
+  </div>
   <nav class="site-nav" aria-label="사이트 메뉴">
     <div class="site-nav__inner">
       <a class="site-nav__brand" href="index.html">DELF B2</a>
@@ -193,6 +178,51 @@
       <p><a href="https://french-in-seoul.com/이용약관/">이용약관</a> · <a class="js-policy" data-policy="refund" href="https://french-in-seoul.com/환불-취소정책/">환불/취소정책</a> · <a class="js-policy" data-policy="privacy" href="https://french-in-seoul.com/개인정보-처리방침/">개인정보처리방침</a></p>
     </div>
   </footer>
+
+<script>
+(function(){
+  var banner = document.getElementById('consent-banner');
+  if(!banner || typeof gtag !== 'function') return;
+  var accept = banner.querySelector('[data-consent="accept"]');
+  var reject = banner.querySelector('[data-consent="reject"]');
+  var CONSENT_KEY = 'ga_consent_choice';
+  var GA_ID = 'G-QH1BMWHPY7';
+  var configured = false;
+
+  function hide(){
+    banner.classList.remove('is-visible');
+    banner.hidden = true;
+  }
+
+  function updateConsent(status){
+    try{ localStorage.setItem(CONSENT_KEY, status); }catch(e){}
+    var granted = status === 'granted';
+    gtag('consent','update',{
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: granted ? 'granted' : 'denied'
+    });
+    if(granted && !configured){
+      gtag('config', GA_ID, { anonymize_ip: true });
+      configured = true;
+    }
+    hide();
+  }
+
+  var stored = null;
+  try{ stored = localStorage.getItem(CONSENT_KEY); }catch(e){}
+  if(stored === 'granted' || stored === 'denied'){
+    updateConsent(stored);
+  } else {
+    banner.hidden = false;
+    banner.classList.add('is-visible');
+  }
+
+  if(accept){ accept.addEventListener('click', function(){ updateConsent('granted'); }); }
+  if(reject){ reject.addEventListener('click', function(){ updateConsent('denied'); }); }
+})();
+</script>
 
 <!-- Modal: Privacy Policy -->
 <style>
