@@ -116,10 +116,23 @@
           <p style="margin:0 0 12px; color:#2d3748; font-size:0.96em;">
             강의·코칭 <strong>15년 이상</strong> 활동했고, 전 DELF 시험관으로 CEFR 기반 맞춤형 수업을 직접 지도합니다.
           </p>
+          <figure class="cert-card">
+            <a class="cert-card__thumb" href="/image/Examinateur-2015.avif" target="_blank" rel="noopener noreferrer" data-cert-open>
+              <img src="/image/Examinateur-2015.avif"
+                   alt="DELF 시험관 위촉장 · France Éducation international"
+                   width="640" height="452"
+                   loading="lazy" decoding="async">
+            </a>
+            <figcaption class="cert-card__caption">DELF 시험관 위촉장 · France Éducation international</figcaption>
+          </figure>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
             <a href="https://french-in-seoul.com/서울-프랑스어-강사/"
                style="display:inline-block; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:600; background:#2b6cb0; color:#fff;">
               강사 프로필 보기 →
+            </a>
+            <a href="https://www.linkedin.com/in/cdwt/" target="_blank" rel="noopener noreferrer"
+               style="display:inline-block; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:600; background:#fff; color:#2b6cb0; border:1px solid #2b6cb0;">
+              LinkedIn에서 더 보기
             </a>
           </div>
         </div>
@@ -378,6 +391,16 @@
 })();
 </script>
 
+<!-- Modal: Certificate -->
+<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cert-title">
+  <div class="cert-modal__overlay" data-cert-close></div>
+  <div class="cert-modal__dialog" role="document">
+    <button type="button" class="cert-modal__close" aria-label="Close" title="Close" data-cert-close>&times;</button>
+    <img class="cert-modal__image" src="/image/Examinateur-2015.avif" alt="DELF 시험관 위촉장 · France Éducation international" decoding="async">
+    <p id="cert-title" class="cert-modal__caption">DELF 시험관 위촉장 · France Éducation international</p>
+  </div>
+</div>
+
 <!-- Modal: Privacy Policy -->
 <style>
   .policy-modal{position:fixed;inset:0;display:none;z-index:9999}
@@ -415,6 +438,32 @@
 
 <script>
 (function(){
+  var certModal = document.getElementById('cert-modal');
+  if(certModal){
+    var certOpen = document.querySelector('[data-cert-open]');
+    var certCloseEls = certModal.querySelectorAll('[data-cert-close]');
+    var certOverlay = certModal.querySelector('.cert-modal__overlay');
+
+    function openCert(e){
+      if(e) e.preventDefault();
+      certModal.classList.add('is-open');
+      certModal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    }
+    function closeCert(){
+      certModal.classList.remove('is-open');
+      certModal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open');
+    }
+
+    if(certOpen){ certOpen.addEventListener('click', openCert); }
+    certCloseEls.forEach(function(el){ el.addEventListener('click', closeCert); });
+    if(certOverlay){ certOverlay.addEventListener('click', closeCert); }
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && certModal.classList.contains('is-open')) closeCert();
+    });
+  }
+
   var modal = document.getElementById('policy-modal');
   if(!modal) return;
   var iframe = modal.querySelector('iframe');
