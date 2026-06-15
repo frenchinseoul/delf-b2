@@ -3,3 +3,18 @@ docs/
 data/
 Production_ecrite/non_protege-Sujet Production écrite B2 - transports_1.pdf
 data/search console/xn--vb0br4r90iv5cb2aj25d.com-Performance-on-Search-2025-11-21.zip
+
+# Local SEO tools, exports, and credentials
+tools/seo/
+archives/
+en/
+seo_toolkit_handoff_*.zip
+tools/seo/.env
+tools/seo/*/.env
+tools/seo/*/outputs/
+tools/seo/*/client_secret*.json
+tools/seo/*/credentials*.json
+tools/seo/*/token*.json
+tools/seo/*/service-account*.json
+tools/seo/*/service_account*.json
+tools/seo/*/*.secret.json
